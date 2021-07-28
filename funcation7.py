@@ -20,7 +20,7 @@ class bug_report(MainWindow):
             self.ui.textEdit_4.clear()
             def outputshown(self, x):                
                 self.ui.textEdit_4.append(x)
-            
+            # sorry but i want this thing screat, for security reasons..
             print("report submitted")
             outputshown(self, "REPORT SUBMIT SUCCESFULLY BHAI JAN")
 
