@@ -23,8 +23,6 @@ import sqlite3
 class antar_yami(MainWindow):
     def ubtohts(self, enable):
         if enable:
-            
-#-----------------------------------------------------------------------------first close driver if its open----            
             try:
                 driver.close()
             except:
@@ -105,14 +103,10 @@ class antar_yami(MainWindow):
                     QtTest.QTest.qWait(5000)
                     WebDriverWait(driver,10000).until(EC.visibility_of_element_located((By.TAG_NAME,'body')))
                     if("login.microsoftonline.com" in driver.current_url):
-            #             print("logging in")
                         emailField = WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'i0116')))
-            #             print("email finding")
                         emailField.click()
                         emailField.send_keys(uniqueusename)
-            #             print("email sucessfull entering")
                         WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'idSIButton9'))).click() #Next button
-            #             print("button sucessfull clicking")
                         
                         try:
                             driver.find_element_by_id('usernameError')
@@ -122,10 +116,8 @@ class antar_yami(MainWindow):
                             pass
                             
                         passwordField = WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'i0118')))
-            #             print("pass finding")
                         passwordField.click()
                         passwordField.send_keys(uniqueusepaswword)
-            #             print("pass sucessfull entering")
                         WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'idSIButton9'))).click()
                     
                         try:
@@ -174,8 +166,6 @@ class antar_yami(MainWindow):
                 except:
                     print('lec database not load successful')
                     outputshown('MS LECTURE NAME DATABASE NOT LOADED\nOR MAY BE NAME SAVE IN DATABASE ARE NOT MATCH WITH THE INPUT')
-                # lec_name = {'WC' : '2021_ec_7_a_3171004_wc00', 'AI' : '2021-ec-7-3171105-ai00', 'DIVP' : '2021-ec-7-3171109-divp00', 'DSP' : '2021_ec_7_a_3171003_dsp00', 'IOT' : '2021_ec_7_a_3171108_iot00', 'ML' : '2021_ec_7_a_b_iml00', 'WC_LAB' : '2021_ec_7_a_3171004_wc01', 'IOT_LAB' : '2021_ec_7_a_3171108_iot01', 'DSP_LAB' : '2021_ec_7_a_3171003_dsp01', 'AI_LAB' : '2021-ec-7-3171105-ai01'}
-                # lec_classname = {'2021_ec_7_a_3171004_wc00' : 'lecture', '2021-ec-7-3171105-ai00' : 'general', '2021-ec-7-3171109-divp00' : 'general', '2021_ec_7_a_3171003_dsp00' : 'dsp lecture_7a', '2021_ec_7_a_3171108_iot00' : 'lecture_7a', '2021_ec_7_a_b_iml' : 'general', '2021_ec_7_a_3171004_wc01':'batch_a1', '2021_ec_7_a_3171108_iot01':'lab_a3', '2021_ec_7_a_3171003_dsp01' : 'lab_a1', '2021-ec-7-3171105-ai01':'general'}
         
                 #---------------------------------------------------------------------------------------grab all the class + sub class list
 
@@ -287,7 +277,7 @@ class antar_yami(MainWindow):
                                         self.ui.auto_error.clear()
                                         outputshown('YOUR LEC IS START BUDDY')
                                         return False
-            #                     print("Metting is not start right now") #uncomment pls
+                                print("Metting is not start right now") #uncomment pls
                             except Exception as e:
                                 Error = str(e)
                                 if Error.startswith("Message"):
@@ -351,12 +341,6 @@ class antar_yami(MainWindow):
                                 return False
                             except:
                                 QtTest.QTest.qWait(60000)
-                                # driver.refresh()
-            #                 except Exception as e:
-            #                     Error = str(e)
-            #                     if Error.startswith("Message"):
-            #             #             print("sorry bhai")
-            #                         return False
                             i += 1
                 fuq = join_button_checker()
                 
@@ -400,10 +384,9 @@ class antar_yami(MainWindow):
                     QtTest.QTest.qWait(5000)
                     while sweta_checker(webcam, microphone):
                         if(webcam.get_attribute('title')=='Turn camera on') & (microphone.get_attribute('title')=='Unmute microphone'):
-                            print("yooo bou i am coming")
                             joinnowbtn = WebDriverWait(driver, 100).until(EC.presence_of_element_located((By.XPATH, '//*[@id="page-content-wrapper"]/div[1]/div/calling-pre-join-screen/div/div/div[2]/div[1]/div[2]/div/div/section/div[1]/div/div/button')))
                             joinnowbtn.click()
-                            print('finally apun ne click kiya bhau')
+                            print('finally mike and camera are close')
                             return True
                         else:
                             sweta_checker(webcam, microphone)
@@ -420,17 +403,16 @@ class antar_yami(MainWindow):
             # =============================================================================        
 
             def leave_by_people(self):
-                print("entering in leave by people ")
                 self.ui.textEdit.clear()
                 QtTest.QTest.qWait(20000)
                 def chat_section_opener():
                     try:
                         button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'roster-button')))
                         driver.execute_script("arguments[0].click();", button)
-        #                 print("Clicked on roster button")
+                        print("Clicked on roster button")
                         return True
                     except:
-        #                 print("Not clickable coz calling screen is not intractable")
+                        print("Not clickable coz calling screen is not intractable")
                         return False
         
                 def heavy_driver():
@@ -442,7 +424,7 @@ class antar_yami(MainWindow):
                         except:
                             leave_by_people(self)
                         chat_section_opener()
-        #                 print("Again calling calling")
+        #                 print("Again call the chat_section_opener funcation")
                     return True
                 
                 if heavy_driver() == True:
@@ -467,7 +449,7 @@ class antar_yami(MainWindow):
                         no_of_people_info = no_of_people_info.split('\n')
                         print(f" {no_of_people_info} are present")
                         outputshown(f" {no_of_people_info[:4]}.... ARE PRESENT")
-                        if len(no_of_people_info) <= 5:
+                        if len(no_of_people_info) <= 10:
             #                     print(len(no_of_people_info))
                             if len(no_of_people_info[0]) == 0:
                                 heavy_driver()
@@ -600,8 +582,8 @@ class antar_yami(MainWindow):
                             driver.close()
                             break
                         except:
-                            print("alpha is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            print("alpha is dont want to close, ku6 karo")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROLLED SO, PLS SHUT THE APP AND RESTART IT")
                 #------------------------------------------------------------------------------------------------------
                     rider = condition_chekcer(self)
                     if rider == True:
@@ -611,8 +593,8 @@ class antar_yami(MainWindow):
                             driver.close()
                             break
                         except:
-                            print("rider is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            print("rider is dont want to close, ku6 karo")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROLLED SO, PLS SHUT THE APP AND RESTART IT")
                         
                     delta = class_joining(self)
                     if delta == True:
@@ -622,8 +604,8 @@ class antar_yami(MainWindow):
                             driver.close()
                             break
                         except:
-                            print("delta is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            print("delta is dont want to close, ku6 karo")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROLLED SO, PLS SHUT THE APP AND RESTART IT")
                         
                     provider = leave_by_people(self)
                     if provider == True:
@@ -634,7 +616,7 @@ class antar_yami(MainWindow):
                             break
                         except:
                             print("provider is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROLLED SO, PLS SHUT THE APP AND RESTART IT")
                         
                     bravo = leave_by_time(self)
                     if bravo == True:
