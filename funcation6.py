@@ -10,10 +10,6 @@ import re
 import time
 import datetime
 
-# from typing import TYPE_CHECKING
-# if TYPE_CHECKING:
-#     import main
-
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -147,14 +143,10 @@ class antar_yami2(MainWindow):
                     QtTest.QTest.qWait(5000)
                     WebDriverWait(driver,10000).until(EC.visibility_of_element_located((By.TAG_NAME,'body')))
                     if("login.microsoftonline.com" in driver.current_url):
-            #             print("logging in")
                         emailField = WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'i0116')))
-            #             print("email finding")
                         emailField.click()
                         emailField.send_keys(uniqueusename)
-            #             print("email sucessfull entering")
                         WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'idSIButton9'))).click() #Next button
-            #             print("button sucessfull clicking")
                         
                         try:
                             driver.find_element_by_id('usernameError')
@@ -164,10 +156,8 @@ class antar_yami2(MainWindow):
                             pass
                             
                         passwordField = WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'i0118')))
-            #             print("pass finding")
                         passwordField.click()
                         passwordField.send_keys(uniqueusepaswword)
-            #             print("pass sucessfull entering")
                         WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'idSIButton9'))).click()
                     
                         try:
@@ -177,9 +167,7 @@ class antar_yami2(MainWindow):
                         except:
                             pass
             
-            #             print("sign sucessfull clicking")
                         WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'idSIButton9'))).click() #remember login
-            #             print("remember sucessfull cliking")
                         QtTest.QTest.qWait(5000)
                         outputshown('SUCESSFULLY LOGIN')
                 except Exception as e:
@@ -214,8 +202,6 @@ class antar_yami2(MainWindow):
                 except:
                     print('lec database not load successful')
                     outputshown('MS LECTURE NAME DATABASE NOT LOADED\nOR MAY BE NAME SAVE IN DATABASE ARE NOT MATCH WITH THE INPUT')
-                # lec_name = {'WC' : '2021_ec_7_a_3171004_wc00', 'AI' : '2021-ec-7-3171105-ai00', 'DIVP' : '2021-ec-7-3171109-divp00', 'DSP' : '2021_ec_7_a_3171003_dsp00', 'IOT' : '2021_ec_7_a_3171108_iot00', 'ML' : '2021_ec_7_a_b_iml00', 'WC_LAB' : '2021_ec_7_a_3171004_wc01', 'IOT_LAB' : '2021_ec_7_a_3171108_iot01', 'DSP_LAB' : '2021_ec_7_a_3171003_dsp01', 'AI_LAB' : '2021-ec-7-3171105-ai01'}
-                # lec_classname = {'2021_ec_7_a_3171004_wc00' : 'lecture', '2021-ec-7-3171105-ai00' : 'general', '2021-ec-7-3171109-divp00' : 'general', '2021_ec_7_a_3171003_dsp00' : 'dsp lecture_7a', '2021_ec_7_a_3171108_iot00' : 'lecture_7a', '2021_ec_7_a_b_iml' : 'general', '2021_ec_7_a_3171004_wc01':'batch_a1', '2021_ec_7_a_3171108_iot01':'lab_a3', '2021_ec_7_a_3171003_dsp01' : 'lab_a1', '2021-ec-7-3171105-ai01':'general'}
         
                 #---------------------------------------------------------------------------------------grab all the class + sub class list
                 QtTest.QTest.qWait(18000)
@@ -331,10 +317,10 @@ class antar_yami2(MainWindow):
                                 no = no.split('\n')
                                 if 'Join' in no:
                                     if 'Meeting now' in no:
-                                        print("le bhai ho gaya lec chalu ho ja ready")
+                                        print("le bhai ho gaya lec chalu, ready ho jao")
                                         outputshown('YOUR LEC IS START BUDDY')
                                         return False
-            #                     print("Metting is not start right now") #uncomment pls
+                                print("Metting is not start right now") #uncomment pls
                             except Exception as e:
                                 Error = str(e)
                                 if Error.startswith("Message"):
@@ -361,7 +347,7 @@ class antar_yami2(MainWindow):
                                         if no[i+1] == 'Join':
                                             f_no = no[i]
                                             f_no = int(str(f_no[1:]))
-                #                             print(f_no) #uncomment
+                                            print(f_no) #uncomment
                 #------------------------------------------------------------------------------------------ if you want to change no of people                     
                                             if f_no >= new_min_join:
                                                 print("people are more, class with more student")
@@ -396,12 +382,6 @@ class antar_yami2(MainWindow):
                                 return False
                             except:
                                 QtTest.QTest.qWait(60000)
-                                # driver.refresh()
-            #                 except Exception as e:
-            #                     Error = str(e)
-            #                     if Error.startswith("Message"):
-            #             #             print("sorry bhai")
-            #                         return False
                             i += 1
                 fuq = join_button_checker()
                 
@@ -463,25 +443,20 @@ class antar_yami2(MainWindow):
                     try:
                         button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'roster-button')))
                         driver.execute_script("arguments[0].click();", button)
-        #                 print("Clicked on roster button")
                         return True
                     except:
-        #                 print("Not clickable coz calling screen is not intractable")
                         return False
         
                 def heavy_driver():
                     while not chat_section_opener():
                         try:
                             WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, 'ts-calling-screen'))).click()
-        #                     print("Trying to click on calling-screen")
                         except:
                             leave_by_people(self)
                         chat_section_opener()
-        #                 print("Again calling calling")
                     return True
                 
                 if heavy_driver() == True:
-        #             print("I am clicked and stop my working")
                     pass
                         
                 def leave_checker():
@@ -521,7 +496,7 @@ class antar_yami2(MainWindow):
                         return False
                     except WebDriverException or TimeoutException or NoSuchWindowException or NoAlertPresentException or NoSuchFrameException or NoSuchElementException or ElementNotVisibleException or ElementNotSelectableException:
                         print("There is button not interacting so retrying to get the button")
-                        # outputshown("There is button not interacting so retrying to get the button")
+                        outputshown("There is button not interacting so retrying to get the button")
                         self.leave_by_people()
                         return False
             
@@ -588,9 +563,6 @@ class antar_yami2(MainWindow):
                         pass
                     elif ghost == False:
                         break
-                    
-                    
-                    
                     try:
                         if("teams.microsoftonline.com" in driver.current_url):
                             pass
@@ -604,7 +576,7 @@ class antar_yami2(MainWindow):
                                 break
                             except:
                                 print("charli is not is dont want to close ku6 karo")
-                                outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                                outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROL SO, PLS SHUT THE APP AND RESTART IT")
                     
                 #------------------------------------------------------------------------------------------------------
 
@@ -617,7 +589,7 @@ class antar_yami2(MainWindow):
                             break
                         except:
                             print("alpha is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROL SO, PLS SHUT THE APP AND RESTART IT")
                 #------------------------------------------------------------------------------------------------------
                     rider = condition_chekcer(self)
                     if rider == True:
@@ -628,7 +600,7 @@ class antar_yami2(MainWindow):
                             break
                         except:
                             print("rider is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROL SO, PLS SHUT THE APP AND RESTART IT")
                         
                     delta = class_joining(self)
                     if delta == True:
@@ -639,7 +611,7 @@ class antar_yami2(MainWindow):
                             break
                         except:
                             print("delta is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROL SO, PLS SHUT THE APP AND RESTART IT")
                         
                     provider = leave_by_people(self)
                     if provider == True:
@@ -650,7 +622,7 @@ class antar_yami2(MainWindow):
                             break
                         except:
                             print("provider is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROL SO, PLS SHUT THE APP AND RESTART IT")
                         
                     bravo = leave_by_time(self)
                     if bravo == True:
@@ -661,7 +633,7 @@ class antar_yami2(MainWindow):
                             break
                         except:
                             print("bravo is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROL SO, PLS SHUT THE APP AND RESTART IT")
                     
 
                         
