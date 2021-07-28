@@ -516,7 +516,7 @@ class UIFunctions(MainWindow):
                                     print("sucessfull try kiya bhai")
                                     bypass_login(self)
                                 except:
-                                    print("bypass bhsdika nikla ")
+                                    print("bypass ")
                         except:
                             return False
                     except WebDriverException or TimeoutException or NoAlertPresentException or NoSuchFrameException or ElementNotVisibleException or ElementNotSelectableException:
@@ -572,7 +572,7 @@ class UIFunctions(MainWindow):
                                 if(webcam.get_attribute('title')=='Turn camera on') & (microphone.get_attribute('title')=='Unmute microphone'):
                                     joinnowbtn = driver.find_element_by_xpath('//*[@id="page-content-wrapper"]/div[1]/div/calling-pre-join-screen/div/div/div[2]/div[1]/div[2]/div/div/section/div[1]/div/div/button')
                                     joinnowbtn.click()
-                                    print('finally apun ne click kiya bhau')
+   
                                     return True
                                 else:
                                     sweta_checker1(webcam, microphone)
@@ -781,7 +781,7 @@ class UIFunctions(MainWindow):
                         try:
                             break
                         except:    
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I COULD NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
 
                     charli = login(self)
                     if charli == True:
@@ -791,7 +791,7 @@ class UIFunctions(MainWindow):
                             driver.close()
                             break
                         except:
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I COULD NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
 
                     delta = class_joining(self)
                     if delta == True:
@@ -801,8 +801,8 @@ class UIFunctions(MainWindow):
                             driver.close()
                             break
                         except:
-                            print("delta is not is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            print("delta is dont want to close ku6 karo")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I COULD NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
                         
                     if len(end_time) != 0:
                         bravo = leave_by_time(self)
@@ -815,7 +815,7 @@ class UIFunctions(MainWindow):
                             driver.close()
                             break
                         except:
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I COULD NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
                         
                     t2_time = str(datetime.datetime.now())
                     t2_min = t2_time[-12:-10]
