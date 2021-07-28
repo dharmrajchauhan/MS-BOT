@@ -30,7 +30,7 @@ class UIFunctions(MainWindow):
     # =============================================================================
         if enable:
             self.ui.textEdit.clear()
-            print('start bhai jan')
+            print('Ui send start command')
             # =============================================================================
             #   For output print in the window
             # =============================================================================
@@ -147,7 +147,7 @@ class UIFunctions(MainWindow):
                         outputshown("hmmm something is groing wrong\nkindly provide input time in 22:10 format")
                         return False
                 except Exception as E:
-                    print(E, 'hiii i am error')
+                    print(f"Exception of timechecker-1:- {E}")
             
             # =============================================================================
             #       If user only provide start time            
@@ -165,7 +165,7 @@ class UIFunctions(MainWindow):
                         outputshown("hmmm something is groing wrong\nkindly provide input time in 22:10 format")
                         return False
                 except Exception as E:
-                    print(E, 'hiii i am error')
+                    print(f"Exception of timechecker2:-{E}")
                     return False
             
             # =============================================================================
@@ -306,15 +306,10 @@ class UIFunctions(MainWindow):
                     driver.get(final_link)
                     WebDriverWait(driver,20000).until(EC.visibility_of_element_located((By.TAG_NAME,'body')))
                     if("login.microsoftonline.com" in driver.current_url):
-            #             print("logging in")
                         emailField = WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'i0116')))
-        #     #             print("email finding")
                         emailField.click()
-                        # emailField.send_keys(self.ip['email'])
                         emailField.send_keys(uniqueusename)
-            #             print("email sucessfull entering")
                         WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, 'idSIButton9'))).click() #Next button
-            #             print("button sucessfull clicking")
                         
                         try:
                             driver.find_element_by_id('usernameError')
@@ -325,11 +320,8 @@ class UIFunctions(MainWindow):
                             pass
                             
                         passwordField = WebDriverWait(driver, 10000).until(EC.element_to_be_clickable((By.ID, 'i0118')))
-            #             print("pass finding")
                         passwordField.click()
-                        # passwordField.send_keys(self.ip['passwd'])
                         passwordField.send_keys(uniqueusepaswword)
-            #             print("pass sucessfull entering")
                         WebDriverWait(driver, 10000).until(EC.element_to_be_clickable((By.ID, 'idSIButton9'))).click()
                     
                         try:
@@ -340,9 +332,7 @@ class UIFunctions(MainWindow):
                         except:
                             pass
             
-            #             print("sign sucessfull clicking")
                         WebDriverWait(driver, 10000).until(EC.element_to_be_clickable((By.ID, 'idSIButton9'))).click() #remember login
-            #             print("remember sucessfull cliking")
                         QtTest.QTest.qWait(5000)
         
                 except Exception as e:
@@ -399,10 +389,8 @@ class UIFunctions(MainWindow):
 
             def leave_by_people(self):
                 self.ui.textEdit.clear()
-                print('enter in leave by people')
                 def chat_section_opener():
                     try:
-                        # QtTest.QTest.qWait(2000)
                         button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'roster-button')))
                         driver.execute_script("arguments[0].click();", button)
                         print("Clicked on roster button")
@@ -421,7 +409,7 @@ class UIFunctions(MainWindow):
                         except:
                             self.leave_by_people()
                         chat_section_opener()
-                        print("Again calling calling")
+                        print("Again call the chat_section_opener")
                     return True
                 
                 if heavy_driver() == True:
@@ -454,20 +442,18 @@ class UIFunctions(MainWindow):
                         print(f" {no_of_people_info} are present")
                         
                         if len(no_of_people_info) < 10:
-        #                     print(len(no_of_people_info))
                             if len(no_of_people_info[0]) == 0:
                                 heavy_driver()
                                 return False
                             outputshown(f"Only {no_of_people_info} are present\nSo, i desided to leave")
                             outputshown("again after 10 mins i am join the meeting and check..")
                             leave_checker(i)
-                            QtTest.QTest.qWait(60000)
+                            QtTest.QTest.qWait(900000)
                             if j <= 5 and i == 0:
                                 print("i am call the first loop")
                                 bypass_login(self)
-                                print("i am back the first loop")
+                                print("i am exit from the first loop")
                             else:
-                                print("enter in the exit loop")
                                 pass
 
                             try:
@@ -522,7 +508,7 @@ class UIFunctions(MainWindow):
                     except WebDriverException or TimeoutException or NoAlertPresentException or NoSuchFrameException or ElementNotVisibleException or ElementNotSelectableException:
                         print("There is button not interacting so retrying to get the button")
                         return False
-                        # outputshown("There is button not interacting so retrying to get the button")
+                        outputshown("There is button not interacting so retrying to get the button")
                     except:
                         leave_by_people(self)
                         return False
@@ -623,7 +609,6 @@ class UIFunctions(MainWindow):
                                     return False
                     
                             def aletring1():
-                                print("entering in alerting")
                                 try:
                                     no_of_people_info = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, '//*[@id="page-content-wrapper"]/div[1]/div/calling-screen/div/div[2]/meeting-panel-components/calling-roster/div/div[3]/div/div[1]/accordion/div/accordion-section[2]/div/calling-roster-section/div/div[2]/div/ul'))).text
                                     no_of_people_info = no_of_people_info.split('\n')
@@ -651,7 +636,7 @@ class UIFunctions(MainWindow):
                                     return False
                                 except WebDriverException or TimeoutException or NoSuchWindowException or NoAlertPresentException or NoSuchFrameException or NoSuchElementException or ElementNotVisibleException or ElementNotSelectableException:
                                     print("There is button not interacting so retrying to get the button")
-                                    # outputshown("There is button not interacting so retrying to get the button")
+#                                     outputshown("There is button not interacting so retrying to get the button")
                                 except:
                                     leave_by_people1()
                                     return False
@@ -781,7 +766,7 @@ class UIFunctions(MainWindow):
                         try:
                             break
                         except:    
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I COULD NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME, WHICH I COULD NOT CONTROLLED SO PLS SHUT THE APP AND RESTART IT")
 
                     charli = login(self)
                     if charli == True:
@@ -791,7 +776,7 @@ class UIFunctions(MainWindow):
                             driver.close()
                             break
                         except:
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I COULD NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH, I COULD NOT CONTROLLED SO PLS SHUT THE APP AND RESTART IT")
 
                     delta = class_joining(self)
                     if delta == True:
@@ -801,8 +786,8 @@ class UIFunctions(MainWindow):
                             driver.close()
                             break
                         except:
-                            print("delta is dont want to close ku6 karo")
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I COULD NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            print("delta is dont want to close, ku6 karo")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH, I COULD NOT CONTROLLED SO PLS SHUT THE APP AND RESTART IT")
                         
                     if len(end_time) != 0:
                         bravo = leave_by_time(self)
@@ -815,7 +800,7 @@ class UIFunctions(MainWindow):
                             driver.close()
                             break
                         except:
-                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH I COULD NOT CONTROLLED PLS SHUT THE APP AND RESTART IT")
+                            outputshown("SORRY USER SOMETHING BAD HAPPEN AT CLOSING TIME WHICH, I COULD NOT CONTROLLED SO PLS SHUT THE APP AND RESTART IT")
                         
                     t2_time = str(datetime.datetime.now())
                     t2_min = t2_time[-12:-10]
