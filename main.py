@@ -241,7 +241,7 @@ class MainWindow(QMainWindow):
         #--------------------------------------------------------------------------------------------------------------------
 
         def upfuncation11():
-            SAMPLE_DOCUMENTT_ID = '1ElOP40uORTCf8o7SXKYbxGMLtUluye6BRUufEzFF7Pc'
+            SAMPLE_DOCUMENTT_ID = ''
             document = service.documents().get(documentId=SAMPLE_DOCUMENTT_ID).execute()
             if document.get('title') == 'funcation11':
                 closeEvent(self)
@@ -257,7 +257,7 @@ class MainWindow(QMainWindow):
             else:
                 return False
         def upfuncation21():
-            SAMPLE_DOCUMENTT_ID = '1SwEyUutLOazsIwpfzOsAPZEDc5pEfLjpiXK5H80xXI0'
+            SAMPLE_DOCUMENTT_ID = ''
             document = service.documents().get(documentId=SAMPLE_DOCUMENTT_ID).execute()
             if document.get('title') == 'funcation21':
                 closeEvent(self)
@@ -273,7 +273,7 @@ class MainWindow(QMainWindow):
             else:
                 return False
         def upfuncation31():
-            SAMPLE_DOCUMENTT_ID = '1cU5wplyHhcCoi0bIGWR7x2XzqmXpOiDi1ypoy9AsGzc'
+            SAMPLE_DOCUMENTT_ID = ''
             document = service.documents().get(documentId=SAMPLE_DOCUMENTT_ID).execute()
             if document.get('title') == 'funcation31':
                 closeEvent(self)
@@ -289,7 +289,7 @@ class MainWindow(QMainWindow):
             else:
                 return False          
         def upfuncation41():
-            SAMPLE_DOCUMENTT_ID = '1tDyCAAJJMbPhTPuP7A3IBEQz1cBeltgkTyWv24oHS6g'
+            SAMPLE_DOCUMENTT_ID = ''
             document = service.documents().get(documentId=SAMPLE_DOCUMENTT_ID).execute()
             if document.get('title') == 'funcation41':
                 closeEvent(self)
@@ -305,7 +305,7 @@ class MainWindow(QMainWindow):
             else:
                 return False
         def upfuncation51():
-            SAMPLE_DOCUMENTT_ID = '1US6cZPieqD69pMW0UMt_Exe54taJuL_IKX-Mf-i4zWE'
+            SAMPLE_DOCUMENTT_ID = ''
             document = service.documents().get(documentId=SAMPLE_DOCUMENTT_ID).execute()
             if document.get('title') == 'funcation51':
                 closeEvent(self)
@@ -322,7 +322,7 @@ class MainWindow(QMainWindow):
                 return False
         def upfuncation61():
             # print("evet")
-            SAMPLE_DOCUMENTT_ID = '1If2pzkWpzM26af4dSycZRhgL2A5hmkAnk9YwFSmxTJU'
+            SAMPLE_DOCUMENTT_ID = ''
             document = service.documents().get(documentId=SAMPLE_DOCUMENTT_ID).execute()
             if document.get('title') == 'funcation61':
                 closeEvent(self)
@@ -339,7 +339,7 @@ class MainWindow(QMainWindow):
                 return False
         def upfuncation71():
             # print("evet")
-            SAMPLE_DOCUMENTT_ID = '1dX7Y7pXlIBqCAaAsU2PnqmOWaSVw9xnkJhJ1W7vpYQ8'
+            SAMPLE_DOCUMENTT_ID = ''
             document = service.documents().get(documentId=SAMPLE_DOCUMENTT_ID).execute()
             if document.get('title') == 'funcation71':
                 closeEvent(self)
@@ -356,7 +356,7 @@ class MainWindow(QMainWindow):
                 return False
         def upfuncationmain1():
             # print("evet")
-            SAMPLE_DOCUMENTT_ID = '1PHWXmgRI5jdg2wSr6-mvH_SvrSMjEk_N8UINlgxWgek'
+            SAMPLE_DOCUMENTT_ID = ''
             document = service.documents().get(documentId=SAMPLE_DOCUMENTT_ID).execute()
             if document.get('title') == 'main1':
                 closeEvent(self)
@@ -373,7 +373,7 @@ class MainWindow(QMainWindow):
                 return False
         def upfuncationui1():
             # print("evet")
-            SAMPLE_DOCUMENTT_ID = '1O8OVf9wXwqHco5Ify-PNoWl6_VbNVDQyL6d_2RgCcog'
+            SAMPLE_DOCUMENTT_ID = ''
             document = service.documents().get(documentId=SAMPLE_DOCUMENTT_ID).execute()
             if document.get('title') == 'main_ui1':
                 closeEvent(self)
