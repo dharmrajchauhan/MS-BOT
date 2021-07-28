@@ -837,10 +837,5 @@ class antar_yami2(MainWindow):
                 
 
 
-#______________________________________________________________________________________________________    
-# URL ="https://teams.microsoft.com/_#/l/meetup-join/19%3aDRaV4NceYehQfXwwjkZyjo2lZsxYixUNaXmSBPsbA1I1%40thread.tacv2/1625813670683?context=%7b%22Tid%22%3a%22fb719a51-6e43-438c-bea8-a3900108c865%22%2c%22Oid%22%3a%22f96806c6-2f09-43ce-b9b2-05438b82bd20%22%7d"
-# CREDS = {'email' : '180140111015@gecbhar.gujgov.edu.in','passwd':'Priti123##'}
-
-# antaryami('WC', '03:28', '05:17', CREDS)
 
 
